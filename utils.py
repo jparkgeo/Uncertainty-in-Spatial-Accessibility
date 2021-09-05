@@ -263,9 +263,5 @@ def measure_accessibility(_thread_id, supply, demand, supply_prob, file_names, o
     return _supply, _demand
 
 
-#     supply.to_file(result_path.joinpath(f'supply_{_thread_id}.shp'))
-#     demand.to_file(result_path.joinpath(f'demand_{_thread_id}.shp'))
-
-
 def measure_accessibility_unpacker(args):
     return measure_accessibility(*args)
