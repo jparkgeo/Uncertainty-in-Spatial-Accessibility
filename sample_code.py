@@ -6,6 +6,7 @@ import multiprocessing as mp
 import itertools
 import utils
 import time
+import os
 
 tqdm.pandas()
 
@@ -13,10 +14,11 @@ data_path = pathlib.Path(r'./sample_data')
 csv_path = data_path.joinpath('traffic_data', 'modified_csv')
 shp_path = data_path.joinpath('traffic_data', 'shp')
 result_path = pathlib.Path(r'./result')
-processor_num = 6
+processor_num = 5
 
 assert data_path
 assert result_path
+
 
 # Import mobility-related files
 file_names = pd.read_csv(data_path.joinpath('traffic_data', 'file_names.txt'), header=None)
