@@ -5,6 +5,6 @@
     "execution_stage": "python sample_code.py",
     "post_processing_stage": "python cleanup.py",
     "slurm_ceiling": {
-        "walltime": "30:00"
+        "walltime": "60:00"
     }
 }
