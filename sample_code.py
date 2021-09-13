@@ -11,8 +11,9 @@ import os
 data_path = pathlib.Path(r'./sample_data')
 csv_path = data_path.joinpath('traffic_data', 'modified_csv')
 shp_path = data_path.joinpath('traffic_data', 'shp')
-result_path = pathlib.Path(r'./result')
+RESULTS_FOLDER = os.getenv('result_folder')
 processor_num = 5
+
 
 assert data_path
 assert result_path
@@ -89,3 +90,5 @@ print("***run time(sec) : ", end-start)
 for i in range(processor_num):
     access_result[i][0].to_file(result_path.joinpath(f'supply_{i}.shp'))
     access_result[i][1].to_file(result_path.joinpath(f'demand_{i}.shp'))
+    
+   
