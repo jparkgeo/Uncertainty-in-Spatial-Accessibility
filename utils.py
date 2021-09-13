@@ -1,7 +1,7 @@
 import networkx as nx
 import geopandas as gpd
 import pandas as pd
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 from shapely.geometry import Point
 import numpy as np
 import ast

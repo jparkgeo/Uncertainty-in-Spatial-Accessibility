@@ -1,6 +1,5 @@
 import geopandas as gpd
 import pandas as pd
-from tqdm.notebook import tqdm
 import pathlib
 import multiprocessing as mp
 import itertools
@@ -8,13 +7,12 @@ import utils
 import time
 import os
 
-tqdm.pandas()
 
 data_path = pathlib.Path(r'./sample_data')
 csv_path = data_path.joinpath('traffic_data', 'modified_csv')
 shp_path = data_path.joinpath('traffic_data', 'shp')
 result_path = pathlib.Path(r'./result')
-processor_num = 5
+processor_num = 1
 
 assert data_path
 assert result_path
