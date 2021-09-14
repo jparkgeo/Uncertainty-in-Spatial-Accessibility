@@ -9,8 +9,6 @@ import os
 
 
 data_path = pathlib.Path(r'./sample_data')
-csv_path = data_path.joinpath('traffic_data', 'modified_csv')
-shp_path = data_path.joinpath('traffic_data', 'shp')
 result_path = os.getenv('result_folder')
 processor_num = 4
 
@@ -20,7 +18,7 @@ assert result_path
 
 # Import mobility-related files
 file_names = pd.read_csv(data_path.joinpath('traffic_data', 'file_names.txt'), header=None)
-original_nodes = gpd.read_file(shp_path.joinpath('nodes.shp'))
+original_nodes = gpd.read_file(data_path.joinpath('traffic_data', 'shp', 'nodes.shp'))
 merged_edge = utils.road_network_with_uncertainty(file_names, data_path)
 G = utils.construct_network(merged_edge, original_nodes)
 G = utils.remove_uncenessary_nodes(G)

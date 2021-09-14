@@ -253,25 +253,22 @@ def E2SFCA_Step2(supply, demand, network, minutes, weights):
 
 def measure_accessibility(_thread_id, supply, demand, supply_prob, file_names, original_nodes, minutes, weights, data_path, result_path):
 
-#     merged_edge = road_network_with_uncertainty(file_names, data_path)
-#     G = construct_network(merged_edge, original_nodes)  # Populate uncertainty of supply
-#     G = remove_uncenessary_nodes(G)
-    print(supply_prob)
-#     supply = supply_uncertainty(supply, supply_prob)  # Populate uncertainty of supply
+    merged_edge = road_network_with_uncertainty(file_names, data_path)
+    G = construct_network(merged_edge, original_nodes)  # Populate uncertainty of supply
+    G = remove_uncenessary_nodes(G)
+    supply = supply_uncertainty(supply, supply_prob)  # Populate uncertainty of supply
 
-#     _supply = E2SFCA_Step1(supply, demand, G, minutes, weights)
-#     print(_supply['Unc_ICU'].sum())
-#     _demand = E2SFCA_Step2(_supply, demand, G, minutes, weights)
+    _supply = E2SFCA_Step1(supply, demand, G, minutes, weights)
+    _demand = E2SFCA_Step2(_supply, demand, G, minutes, weights)
     
-#     temp_result_path = os.path.join(result_path, f'iter_{_thread_id}')
+    temp_result_path = os.path.join(result_path, f'iter_{_thread_id}')
+    if not os.path.isdir(temp_result_path):
+        os.makedirs(temp_result_path)
     
-#     if not os.path.isdir(temp_result_path):
-#         os.makedirs(temp_result_path)
-    
-#     _supply.to_file(os.path.join(temp_result_path, f'supply_{_thread_id}.geojson'), driver='GeoJSON')
-#     _demand.to_file(os.path.join(temp_result_path, f'demand_{_thread_id}.geojson'), driver='GeoJSON')
-    
-#     return _supply, _demand
+    _supply.to_file(os.path.join(temp_result_path, f'supply.geojson'), driver='GeoJSON')
+    _demand.to_file(os.path.join(temp_result_path, f'demand.geojson'), driver='GeoJSON')
+
+    return result_path
 
 
 def measure_accessibility_unpacker(args):
