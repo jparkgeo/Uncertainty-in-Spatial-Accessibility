@@ -62,7 +62,8 @@ supply = utils.find_nearest_osm(G, supply)
 demand = utils.find_nearest_osm(G, demand)
 
 # Set threshold travel time and corresponding spatial impedance
-minutes = [10, 20, 30]
+# minutes = [10, 20, 30]
+minutes = [10]
 weights = {10: 1, 20: 0.68, 30: 0.22}
 
 # Measure accessibility with multiprocessing package
