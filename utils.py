@@ -261,8 +261,13 @@ def measure_accessibility(_thread_id, supply, demand, supply_prob, file_names, o
     _supply = E2SFCA_Step1(supply, demand, G, minutes, weights)
     _demand = E2SFCA_Step2(_supply, demand, G, minutes, weights)
     
-    _supply.to_file(os.path.join(result_path, f'supply_{_thread_id}.geojson'), driver='GeoJSON')
-    _demand.to_file(os.path.join(result_path, f'demand_{_thread_id}.geojson'), driver='GeoJSON')
+    temp_result_path = os.path.join(result_path, f'iter_{_thread_id}')
+    
+    if not os.path.isdir(temp_result_path):
+        os.makedirs(temp_result_path)
+    
+    _supply.to_file(os.path.join(temp_result_path, f'supply_{_thread_id}.geojson'), driver='GeoJSON')
+    _demand.to_file(os.path.join(temp_result_path, f'demand_{_thread_id}.geojson'), driver='GeoJSON')
     
     return _supply, _demand
 
