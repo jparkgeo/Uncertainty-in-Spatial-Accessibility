@@ -253,13 +253,14 @@ def E2SFCA_Step2(supply, demand, network, minutes, weights):
 
 def measure_accessibility(_thread_id, supply, demand, supply_prob, file_names, original_nodes, minutes, weights, data_path, result_path):
 
-    merged_edge = road_network_with_uncertainty(file_names, data_path)
-    G = construct_network(merged_edge, original_nodes)  # Populate uncertainty of supply
-    G = remove_uncenessary_nodes(G)
-    supply = supply_uncertainty(supply, supply_prob)  # Populate uncertainty of supply
+#     merged_edge = road_network_with_uncertainty(file_names, data_path)
+#     G = construct_network(merged_edge, original_nodes)  # Populate uncertainty of supply
+#     G = remove_uncenessary_nodes(G)
+    print(supply_prob)
+#     supply = supply_uncertainty(supply, supply_prob)  # Populate uncertainty of supply
 
-    _supply = E2SFCA_Step1(supply, demand, G, minutes, weights)
-    print(_supply['Unc_ICU'].sum())
+#     _supply = E2SFCA_Step1(supply, demand, G, minutes, weights)
+#     print(_supply['Unc_ICU'].sum())
 #     _demand = E2SFCA_Step2(_supply, demand, G, minutes, weights)
     
 #     temp_result_path = os.path.join(result_path, f'iter_{_thread_id}')
