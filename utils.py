@@ -7,6 +7,7 @@ import numpy as np
 import ast
 import osmnx as ox
 from shapely.ops import cascaded_union
+import os
 
 
 def calculate_min_travel_time(gdf):
@@ -259,7 +260,10 @@ def measure_accessibility(_thread_id, supply, demand, supply_prob, file_names, o
 
     _supply = E2SFCA_Step1(supply, demand, G, minutes, weights)
     _demand = E2SFCA_Step2(_supply, demand, G, minutes, weights)
-
+    
+    _supply.to_file(os.path.join(result_path, f'supply_{_thread_id}.geojson'), driver='GeoJSON')
+    _demand.to_file(os.path.join(result_path, f'demand_{_thread_id}.geojson'), driver='GeoJSON')
+    
     return _supply, _demand
 
 
