@@ -87,7 +87,9 @@ print("***run time(sec) : ", end-start)
 
 # Save results
 for i in range(processor_num):
-    access_result[i][0].to_file(result_path.joinpath(f'supply_{i}.shp'))
-    access_result[i][1].to_file(result_path.joinpath(f'demand_{i}.shp'))
+    access_result[i][0].to_file(os.path.join(result_path, f'supply_{i}.geojson'), driver='GeoJSON'))
+#     access_result[i][0].to_file(result_path.joinpath(f'supply_{i}.shp'))
+    access_result[i][1].to_file(os.path.join(result_path, f'demand_{i}.geojson'), driver='GeoJSON'))
+#     access_result[i][1].to_file(result_path.joinpath(f'demand_{i}.shp'))
     
    
