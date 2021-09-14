@@ -83,7 +83,7 @@ access_result = pool.map(utils.measure_accessibility_unpacker,
                         )
 end = int(time.time())
 pool.close()
-print("***run time(sec) : ", end-start)
+print("***run time(min) : ", (end-start)/60)
 
 # Save results
 for i in range(processor_num):
