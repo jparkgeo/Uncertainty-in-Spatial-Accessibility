@@ -11,9 +11,8 @@ import os
 data_path = pathlib.Path(r'./sample_data')
 csv_path = data_path.joinpath('traffic_data', 'modified_csv')
 shp_path = data_path.joinpath('traffic_data', 'shp')
-RESULTS_FOLDER = os.getenv('result_folder')
-processor_num = 5
-
+result_path = os.getenv('result_folder')
+processor_num = 4
 
 assert data_path
 assert result_path
