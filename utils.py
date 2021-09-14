@@ -259,17 +259,18 @@ def measure_accessibility(_thread_id, supply, demand, supply_prob, file_names, o
     supply = supply_uncertainty(supply, supply_prob)  # Populate uncertainty of supply
 
     _supply = E2SFCA_Step1(supply, demand, G, minutes, weights)
-    _demand = E2SFCA_Step2(_supply, demand, G, minutes, weights)
+    print(_supply['Unc_ICU'].sum())
+#     _demand = E2SFCA_Step2(_supply, demand, G, minutes, weights)
     
-    temp_result_path = os.path.join(result_path, f'iter_{_thread_id}')
+#     temp_result_path = os.path.join(result_path, f'iter_{_thread_id}')
     
-    if not os.path.isdir(temp_result_path):
-        os.makedirs(temp_result_path)
+#     if not os.path.isdir(temp_result_path):
+#         os.makedirs(temp_result_path)
     
-    _supply.to_file(os.path.join(temp_result_path, f'supply_{_thread_id}.geojson'), driver='GeoJSON')
-    _demand.to_file(os.path.join(temp_result_path, f'demand_{_thread_id}.geojson'), driver='GeoJSON')
+#     _supply.to_file(os.path.join(temp_result_path, f'supply_{_thread_id}.geojson'), driver='GeoJSON')
+#     _demand.to_file(os.path.join(temp_result_path, f'demand_{_thread_id}.geojson'), driver='GeoJSON')
     
-    return _supply, _demand
+#     return _supply, _demand
 
 
 def measure_accessibility_unpacker(args):
