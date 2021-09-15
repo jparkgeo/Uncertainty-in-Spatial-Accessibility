@@ -265,8 +265,8 @@ def measure_accessibility(_thread_id, supply, demand, supply_prob, file_names, o
     if not os.path.isdir(temp_result_path):
         os.makedirs(temp_result_path)
     
-    _supply.to_file(os.path.join(temp_result_path, f'supply.shp'))
-    _demand.to_file(os.path.join(temp_result_path, f'demand.shp'))
+    _supply.to_file(os.path.join(temp_result_path, f'supply.geojson'), driver='GeoJSON')
+    _demand.to_file(os.path.join(temp_result_path, f'demand.geojson'), driver='GeoJSON')
 
     return result_path
 
