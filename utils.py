@@ -8,6 +8,7 @@ import ast
 import osmnx as ox
 from shapely.ops import cascaded_union
 import os
+import time
 
 
 def calculate_min_travel_time(gdf):
@@ -253,6 +254,8 @@ def E2SFCA_Step2(supply, demand, network, minutes, weights):
 
 def measure_accessibility(_thread_id, supply, demand, supply_prob, file_names, original_nodes, minutes, weights, data_path, result_path):
 
+    np.random.seed(_thread_id * 10000 + int(time.time()))
+    
     merged_edge = road_network_with_uncertainty(file_names, data_path)
     G = construct_network(merged_edge, original_nodes)  # Populate uncertainty of supply
     G = remove_uncenessary_nodes(G)
